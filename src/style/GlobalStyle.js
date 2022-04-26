@@ -5,9 +5,13 @@ import "@fontsource/raleway/700.css"
 
 const GlobalStyle = createGlobalStyle`
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
-  --custom-darkblue-100 : #100E1D;
-  --custom-darkblue-200: #1E213A;
+  --custom-darkblue-100 : #1E213A;
+  --custom-darkblue-200: #100E1D;
   --custom-lightblue: #3C47E9;
   --custom-white: #E7E7EB;
   --custom-gray-100: #A09FB1;
@@ -16,16 +20,21 @@ const GlobalStyle = createGlobalStyle`
   --custom-font-family: 'Raleway', sans-serif;
 }
 
-
-body {
+body{
   margin: 0;
   padding: 0;
+  height: 100%;
+
+}
+html, #root {
+  height: 100%;
 }
 
 *{
   font-family: var(--custom-font-family);
   font-weight: 500;
-  font-size: 1rem;
+  /* font-size: 1rem; */
+
 }
 
 `
