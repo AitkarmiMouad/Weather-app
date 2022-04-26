@@ -4,6 +4,7 @@ import React from 'react'
 import styled from 'styled-components'
 import tw from "twin.macro"
 import cloud from '../assets/images/Cloud-background.png'
+import cloudStateImage from '../assets/images/Clear.png'
 import FmdGoodIcon from '@mui/icons-material/FmdGood';
 
 const ContainerCustom = styled(Container)`
@@ -24,7 +25,10 @@ const ButtonCustom = styled(Button)`
     background-color: var(--custom-gray-200);
     color: var(--custom-white);
     text-transform: none;
-    height: 35px;
+    /* height: 35px; */
+  }
+  :hover{
+    border: 1px solid white;
   }
   `
 
@@ -32,14 +36,25 @@ const MyLocationIconC = styled(MyLocationIcon)`
   &&{
     background-color: var(--custom-gray-200);
     border-radius: 50%;
-    padding: 4px;
+    padding: 6px;
+    border: 1px solid transparent;
     color: var(--custom-white);
+  }
+  :hover{
+    border: 1px solid white;
+    background-color: var(--custom-darkblue-100);
+
   }
   `
 const cloudImgStyle = {
   width: '115%',
   marginTop: 30,
   placeSelf: 'center',
+}
+const cloudStateStyle={
+  position:'absolute',
+  marginTop: 30,
+
 }
 
 const TemperatureDegree = styled.p`
@@ -100,20 +115,20 @@ const WeatherPreview = () => {
     <ContainerCustom style={{ padding: 0, height: '100%' }}>
       <ContainerCustom>
         <Header>
-          <ButtonCustom size='small' >Search for places</ButtonCustom>
+          <ButtonCustom size='medium' >Search for places</ButtonCustom>
           <IconButton aria-label="location"  >
             <MyLocationIconC />
           </IconButton>
         </Header>
       </ContainerCustom>
-      <div style={{ display: 'flex', justifyContent: 'center', overflow: 'hidden', }}>
+      <div style={{ display: 'flex', justifyContent: 'center', overflow: 'hidden' , position:'relative' }}>
         <img src={cloud} alt="cloud" style={cloudImgStyle} />
-        { }
+        <img src={cloudStateImage} alt="cloud" style={cloudStateStyle} />
       </div>
       <TemperatureDegree>15<span>°C</span></TemperatureDegree>
       <TemperatureState>Shower</TemperatureState>
       <Date><span>Today</span><span>•</span><span>Fri-5-Jun</span></Date>
-      <City style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
+      <City style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', marginBottom: 20 }}>
         <FmdGoodIcon />
         <span>City</span>
       </City>

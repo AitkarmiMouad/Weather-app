@@ -7,10 +7,10 @@ function App() {
 
 
   return (
-    <div style={{ height: '100%' }}>
+    <div>
       <GlobalStyle />
-      <Grid container style={{ height: '100%' }}>
-        <Grid item xs={12} sm={4} style={{ height: '100%' }}>
+      <Grid container >
+        <Grid item xs={12} sm={4} >
           <WeatherPreview />
         </Grid>
         <Grid item xs={12} sm={8}>

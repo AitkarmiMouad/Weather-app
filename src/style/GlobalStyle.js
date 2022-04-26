@@ -23,18 +23,11 @@ const GlobalStyle = createGlobalStyle`
 body{
   margin: 0;
   padding: 0;
-  height: 100%;
-
-}
-html, #root {
-  height: 100%;
 }
 
 *{
   font-family: var(--custom-font-family);
   font-weight: 500;
-  /* font-size: 1rem; */
-
 }
 
 `
