@@ -26,6 +26,23 @@ body{
   font-weight: 500;
 }
 
+::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: var(--custom-darkblue-100);
+}
+
+::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: var(--custom-darkblue-200);
+}
+
+::-webkit-scrollbar {
+	width: 12px;
+	background-color: var(--custom-darkblue-200);
+}
+
 `
 
 export default GlobalStyle;
