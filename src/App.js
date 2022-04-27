@@ -1,10 +1,9 @@
 import { Grid } from "@mui/material";
+import WeatherDashboard from "./components/WeatherDashboard";
 import WeatherPreview from "./components/WeatherPreview";
 import GlobalStyle from "./style/GlobalStyle";
 
 function App() {
-
-
 
   return (
     <div>
@@ -14,7 +13,7 @@ function App() {
           <WeatherPreview />
         </Grid>
         <Grid item xs={12} sm={8}>
-          <div style={{ backgroundColor: 'blueviolet' }}>hi</div>
+          <WeatherDashboard />
         </Grid>
       </Grid>
     </div>

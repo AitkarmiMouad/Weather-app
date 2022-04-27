@@ -22,7 +22,7 @@ const Header = styled.div`
 const ButtonCustom = styled(Button)`
   &&{
     border-radius: 0;
-    background-color: var(--custom-gray-200);
+    background-color: var(--custom-grey-200);
     color: var(--custom-white);
     text-transform: none;
     /* height: 35px; */
@@ -34,11 +34,13 @@ const ButtonCustom = styled(Button)`
 
 const MyLocationIconC = styled(MyLocationIcon)`
   &&{
-    background-color: var(--custom-gray-200);
+    background-color: var(--custom-grey-200);
     border-radius: 50%;
     padding: 6px;
     border: 1px solid transparent;
     color: var(--custom-white);
+    height: 36px;
+    width: 36px;
   }
   :hover{
     border: 1px solid white;
@@ -50,11 +52,10 @@ const cloudImgStyle = {
   width: '115%',
   marginTop: 30,
   placeSelf: 'center',
+  position: 'absolute',
 }
-const cloudStateStyle={
-  position:'absolute',
+const cloudStateStyle = {
   marginTop: 30,
-
 }
 
 const TemperatureDegree = styled.p`
@@ -66,14 +67,14 @@ const TemperatureDegree = styled.p`
   text-align: center;
 
   & span{
-  color: var(--custom-gray-100);
+  color: var(--custom-grey-100);
   font-size: 80px;
 
   }
 `
 
 const TemperatureState = styled.p`
-  color: var(--custom-gray-100);
+  color: var(--custom-grey-100);
   font-size: 30px;
   font-weight: 700;
   margin-top: 40px;
@@ -88,7 +89,7 @@ const Date = styled.p`
   width: 150px;
 
   & span{
-    color: var(--custom-gray-100);
+    color: var(--custom-grey-100);
     font-size: 15px;
     font-weight: 500;
     margin-top: 10px;
@@ -105,7 +106,7 @@ const City = styled.div`
   margin-top: 25px;
 
   & *{
-    color: var(--custom-gray-100) ;
+    color: var(--custom-grey-100) ;
   }
 `
 
@@ -116,14 +117,14 @@ const WeatherPreview = () => {
       <ContainerCustom>
         <Header>
           <ButtonCustom size='medium' >Search for places</ButtonCustom>
-          <IconButton aria-label="location"  >
+          <IconButton aria-label="location" >
             <MyLocationIconC />
           </IconButton>
         </Header>
       </ContainerCustom>
-      <div style={{ display: 'flex', justifyContent: 'center', overflow: 'hidden' , position:'relative' }}>
+      <div style={{ display: 'flex', justifyContent: 'center', position: 'relative', marginBottom: 5 }}>
         <img src={cloud} alt="cloud" style={cloudImgStyle} />
-        <img src={cloudStateImage} alt="cloud" style={cloudStateStyle} />
+        <img src={cloudStateImage} alt="cloud" style={cloudStateStyle} className='w-6/12' />
       </div>
       <TemperatureDegree>15<span>°C</span></TemperatureDegree>
       <TemperatureState>Shower</TemperatureState>
