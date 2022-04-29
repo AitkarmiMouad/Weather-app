@@ -6,12 +6,15 @@ const useAxiosFetch = (dataUrl = null) => {
 
   const [data, setData] = useState([]);
   const [fetchError, setFetchError] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [woeid, setWoeid] = useState(null);
-  const { dataLocation } = useLocation();
+  const { dataLocation, ipInfo } = useLocation();
 
-  if (dataUrl === null) {
+  if (dataUrl === null && ipInfo) {
     dataUrl = dataLocation.city
+  }
+  if (dataUrl === null && !ipInfo) {
+    dataUrl = dataLocation
   }
 
   useEffect(() => {
@@ -25,13 +28,23 @@ const useAxiosFetch = (dataUrl = null) => {
       try {
 
         // Fetch location info to get woeid
-        const woeidResponse = await api.get(`search/?query=${dataUrl.toLowerCase()}`, {
-          signal: controller.signal
-        })
-
-        // Load woeid
-        if (isMounted) {
-          setWoeid(woeidResponse.data[0].woeid)
+        if (ipInfo) {
+          const woeidResponse = await api.get(`search/?query=${dataUrl.toLowerCase()}`, {
+            signal: controller.signal
+          })
+          // Load woeid
+          if (isMounted) {
+            setWoeid(woeidResponse.data[0].woeid)
+          }
+        }
+        else {
+          const woeidResponse = await api.get(`search/?lattlong=${dataUrl}`, {
+            signal: controller.signal
+          })
+          // Load woeid
+          if (isMounted) {
+            setWoeid(woeidResponse.data[0].woeid)
+          }
         }
 
         // fetch location weather Data using woeid
@@ -65,7 +78,7 @@ const useAxiosFetch = (dataUrl = null) => {
       controller.abort();
     }
 
-  }, [dataUrl, woeid])
+  }, [dataUrl, woeid, ipInfo])
 
 
   return { data, fetchError, isLoading }

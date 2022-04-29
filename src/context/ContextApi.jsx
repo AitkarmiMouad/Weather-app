@@ -9,7 +9,7 @@ const ContextApiProvider = (props) => {
   const [locationList, setLocationList] = useState([]);
   const [weatherData, setWeatherData] = useState([]);
   const [weatherFetchError, setWeatherFetchError] = useState(null);
-  const [weatherLoading, setWeatherLoading] = useState(false);
+  const [weatherLoading, setWeatherLoading] = useState(true);
 
 
   useEffect(() => {

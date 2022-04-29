@@ -118,7 +118,7 @@ const WeatherPreview = () => {
   const { drawerState, setDrawerState } = useContext(ContextApi);
 
   const { data, fetchError, isLoading } = useAxiosFetch();
-  const { setWeatherData, weatherData, weatherFetchError, setWeatherFetchError, setWeatherLoading, weatherLoading } = useContext(ContextApi);
+  const { weatherLoading, weatherData, weatherFetchError, setWeatherFetchError, setWeatherLoading, setWeatherData } = useContext(ContextApi);
 
   useEffect(() => {
     setWeatherData(data)
@@ -126,7 +126,7 @@ const WeatherPreview = () => {
     setWeatherLoading(isLoading)
   }, [data, setWeatherData, setWeatherFetchError, setWeatherLoading, fetchError, isLoading])
 
-
+  
   return (
     <ContainerCustom id="drawer-container" style={{ padding: 0, height: '100%', position: 'relative' }}>
       <Drawer />
@@ -142,7 +142,7 @@ const WeatherPreview = () => {
         <img src={cloud} alt="cloud" style={cloudImgStyle} className='opacity-25' />
         <img src={cloudStateImage} alt="cloud" style={cloudStateStyle} className='w-6/12' />
       </div>
-      <TemperatureDegree>15<span>°C</span></TemperatureDegree>
+      <TemperatureDegree>{ !weatherFetchError && !weatherLoading && parseInt(weatherData.consolidated_weather[0].the_temp)}<span>°C</span></TemperatureDegree>
       <TemperatureState>Shower</TemperatureState>
       <Date><span>Today</span><span>•</span><span>Fri-5-Jun</span></Date>
       <City style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', marginBottom: 20 }}>
