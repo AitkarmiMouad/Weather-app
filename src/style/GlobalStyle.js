@@ -5,6 +5,43 @@ import "@fontsource/raleway/700.css"
 
 const GlobalStyle = createGlobalStyle`
 
+.listItem:hover .arrowIcon{
+  opacity: 1;
+  color: var(--custom-white);
+}
+
+.listItem{
+  :hover{
+    border: 1px solid white;
+  }
+}
+
+.ListBox{
+  &&{
+    width: 100% !important;
+    height: 100% !important;
+    color: var(--custom-white);
+  }
+}
+
+.BoxList ::-webkit-scrollbar-thumb {
+	border-radius: 5px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: var(--custom-darkblue-200);
+}
+
+.BoxList ::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 5px;
+	background-color: var(--custom-grey-300);
+  
+}
+
+.BoxList ::-webkit-scrollbar {
+	width: 5px;
+	background-color: var(--custom-darkblue-100);
+}
+
 :root {
   --custom-darkblue-100 : #1E213A;
   --custom-darkblue-200: #100E1D;

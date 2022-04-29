@@ -1,11 +1,15 @@
 import { Button, Container, IconButton } from '@mui/material'
 import MyLocationIcon from '@mui/icons-material/MyLocation';
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import tw from "twin.macro"
 import cloud from '../assets/images/Cloud-background.png'
 import cloudStateImage from '../assets/images/Clear.png'
-import FmdGoodIcon from '@mui/icons-material/FmdGood';
+import FmdGoodIcon from '@mui/icons-material/FmdGood'
+import Drawer from './Drawer'
+import { useState } from 'react'
+import { ContextApi } from '../context/ContextApi';
+
 
 const ContainerCustom = styled(Container)`
   &&{
@@ -111,19 +115,22 @@ const City = styled.div`
 `
 
 const WeatherPreview = () => {
+  const {drawerState,setDrawerState} = useContext(ContextApi);
+
 
   return (
-    <ContainerCustom style={{ padding: 0, height: '100%' }}>
+    <ContainerCustom id="drawer-container" style={{ padding: 0, height: '100%', position: 'relative' }}>
+      <Drawer />
       <ContainerCustom>
         <Header>
-          <ButtonCustom size='medium' >Search for places</ButtonCustom>
+          <ButtonCustom size='medium' onClick={() => { setDrawerState(!drawerState) }} >Search for places</ButtonCustom>
           <IconButton aria-label="location" >
             <MyLocationIconC />
           </IconButton>
         </Header>
       </ContainerCustom>
       <div style={{ display: 'flex', justifyContent: 'center', position: 'relative', marginBottom: 5 }}>
-        <img src={cloud} alt="cloud" style={cloudImgStyle} />
+        <img src={cloud} alt="cloud" style={cloudImgStyle} className='opacity-25' />
         <img src={cloudStateImage} alt="cloud" style={cloudStateStyle} className='w-6/12' />
       </div>
       <TemperatureDegree>15<span>°C</span></TemperatureDegree>
