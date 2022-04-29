@@ -4,6 +4,7 @@ import WeatherPreview from "./components/WeatherPreview";
 import ContextApiProvider from "./context/ContextApi";
 import GlobalStyle from "./style/GlobalStyle";
 
+
 function App() {
 
   return (

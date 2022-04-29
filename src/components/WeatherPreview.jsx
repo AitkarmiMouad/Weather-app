@@ -1,14 +1,14 @@
 import { Button, Container, IconButton } from '@mui/material'
 import MyLocationIcon from '@mui/icons-material/MyLocation';
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import styled from 'styled-components'
 import tw from "twin.macro"
 import cloud from '../assets/images/Cloud-background.png'
 import cloudStateImage from '../assets/images/Clear.png'
 import FmdGoodIcon from '@mui/icons-material/FmdGood'
 import Drawer from './Drawer'
-import { useState } from 'react'
-import { ContextApi } from '../context/ContextApi';
+import { ContextApi } from "../context/ContextApi";
+import useAxiosFetch from "../hooks/useAxiosFetch";
 
 
 const ContainerCustom = styled(Container)`
@@ -115,7 +115,16 @@ const City = styled.div`
 `
 
 const WeatherPreview = () => {
-  const {drawerState,setDrawerState} = useContext(ContextApi);
+  const { drawerState, setDrawerState } = useContext(ContextApi);
+
+  const { data, fetchError, isLoading } = useAxiosFetch();
+  const { setWeatherData, weatherData, weatherFetchError, setWeatherFetchError, setWeatherLoading, weatherLoading } = useContext(ContextApi);
+
+  useEffect(() => {
+    setWeatherData(data)
+    setWeatherFetchError(fetchError)
+    setWeatherLoading(isLoading)
+  }, [data, setWeatherData, setWeatherFetchError, setWeatherLoading, fetchError, isLoading])
 
 
   return (

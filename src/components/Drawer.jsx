@@ -104,8 +104,6 @@ const Drawer = () => {
     setLocation(locationList)
   }, [locationList])
 
-  console.log(listSize)
-
   useEffect(() => {
     if (location !== undefined) setListSize(location.length)
   }, [location])

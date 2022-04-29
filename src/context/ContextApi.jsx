@@ -7,13 +7,21 @@ export const ContextApi = createContext();
 const ContextApiProvider = (props) => {
   const [drawerState, setDrawerState] = useState(false);
   const [locationList, setLocationList] = useState([]);
+  const [weatherData, setWeatherData] = useState([]);
+  const [weatherFetchError, setWeatherFetchError] = useState(null);
+  const [weatherLoading, setWeatherLoading] = useState(false);
+
 
   useEffect(() => {
     setLocationList(locations)
   }, [])
 
   return (
-    <ContextApi.Provider value={{ drawerState, setDrawerState, locationList, setLocationList }} >
+    <ContextApi.Provider
+      value={{
+        weatherFetchError, setWeatherFetchError, weatherLoading, setWeatherLoading,
+        drawerState, setDrawerState, locationList, setLocationList, weatherData, setWeatherData
+      }} >
       {props.children}
     </ContextApi.Provider>
   )
