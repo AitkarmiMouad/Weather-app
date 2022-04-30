@@ -10,6 +10,7 @@ import { ContextApi } from "../context/ContextApi";
 import useAxiosFetch from "../hooks/useAxiosFetch";
 import moment from 'moment';
 import getImages from '../utils/getImage';
+import useLocation from '../api/useLocation';
 
 
 const ContainerCustom = styled(Container)`
@@ -118,8 +119,8 @@ const City = styled.div`
 const WeatherPreview = () => {
 
   const { data, fetchError, isLoading } = useAxiosFetch();
-  const { drawerState, setDrawerState, weatherLoading, weatherData, weatherFetchError,
-    setWeatherFetchError, setWeatherLoading, setWeatherData, isCelsius, convertTemp
+  const { weatherLoading, weatherData, weatherFetchError,
+    setWeatherFetchError, setWeatherLoading, setWeatherData, isCelsius, convertTemp, setReset,reset
   } = useContext(ContextApi);
 
   useEffect(() => {
@@ -133,8 +134,8 @@ const WeatherPreview = () => {
       <Drawer />
       <ContainerCustom>
         <Header>
-          <ButtonCustom size='medium' onClick={() => { setDrawerState(!drawerState) }} >Search for places</ButtonCustom>
-          <IconButton aria-label="location"  >
+          <ButtonCustom size='medium' >Search for places</ButtonCustom>
+          <IconButton aria-label="location" onClick={()=>setReset(!reset)} >
             <MyLocationIconC />
           </IconButton>
         </Header>
@@ -145,7 +146,7 @@ const WeatherPreview = () => {
       </div>
       <TemperatureDegree>{!weatherFetchError && !weatherLoading && parseInt(convertTemp(weatherData.consolidated_weather[0].the_temp))}<span>{isCelsius ? '°C' : '°F'}</span></TemperatureDegree>
       <TemperatureState>{!weatherFetchError && !weatherLoading && weatherData.consolidated_weather[0].weather_state_name}</TemperatureState>
-      <Date><span>Today</span><span>•</span><span>{!weatherFetchError && !weatherLoading && moment(weatherData.consolidated_weather[0].applicable_date).format('ddd,d MMMM')}</span></Date>
+      <Date><span>Today</span><span>•</span><span>{!weatherFetchError && !weatherLoading && moment(weatherData.consolidated_weather[0].applicable_date).format('ddd,D MMMM')}</span></Date>
       <City style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', marginBottom: 20 }}>
         <FmdGoodIcon />
         <span>{!weatherFetchError && !weatherLoading && weatherData.title}</span>

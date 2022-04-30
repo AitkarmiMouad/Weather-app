@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState , useContext} from 'react'
 import useLocation from '../api/useLocation';
 import { api } from '../api/api'
+import { ContextApi } from '../context/ContextApi';
 
 const useAxiosFetch = (dataUrl = null) => {
 
@@ -9,6 +10,7 @@ const useAxiosFetch = (dataUrl = null) => {
   const [isLoading, setIsLoading] = useState(true);
   const [woeid, setWoeid] = useState(null);
   const { dataLocation, ipInfo } = useLocation();
+  const {reset, setReset} = useContext(ContextApi)
 
   if (dataUrl === null && ipInfo) {
     dataUrl = dataLocation.city
@@ -71,6 +73,10 @@ const useAxiosFetch = (dataUrl = null) => {
     }
 
     fetchLocation()
+    
+    // this is a reset so i can use the hook inside a callback by changing the value of reset
+    if(reset){
+    }
 
     return () => {
       isMounted = false;
@@ -78,10 +84,10 @@ const useAxiosFetch = (dataUrl = null) => {
       controller.abort();
     }
 
-  }, [dataUrl, woeid, ipInfo])
+  }, [dataUrl, woeid, ipInfo,reset])
 
 
-  return { data, fetchError, isLoading }
+  return { data, fetchError, isLoading , setReset }
 
 }
 
