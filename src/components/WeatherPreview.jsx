@@ -115,7 +115,6 @@ const City = styled.div`
   }
 `
 
-
 const WeatherPreview = () => {
 
   const { data, fetchError, isLoading } = useAxiosFetch();
@@ -135,7 +134,7 @@ const WeatherPreview = () => {
       <ContainerCustom>
         <Header>
           <ButtonCustom size='medium' onClick={() => { setDrawerState(!drawerState) }} >Search for places</ButtonCustom>
-          <IconButton aria-label="location" >
+          <IconButton aria-label="location"  >
             <MyLocationIconC />
           </IconButton>
         </Header>

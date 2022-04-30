@@ -3,8 +3,6 @@ import WeatherDashboard from "./components/WeatherDashboard";
 import WeatherPreview from "./components/WeatherPreview";
 import ContextApiProvider from "./context/ContextApi";
 import GlobalStyle from "./style/GlobalStyle";
-require('./assets/images/Clear.png')
-
 
 function App() {
 

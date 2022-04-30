@@ -29,15 +29,15 @@ const useLocation = () => {
 
       try {
         if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(getPosition,geoError);
-          if(!geoDenied){
+          navigator.geolocation.getCurrentPosition(getPosition, geoError);
+          if (!geoDenied) {
             setData(position)
           }
           else {
             const response = await axios.get("https://ipinfo.io/json?token=86e633cb5aa109", {
               signal: controller.signal
             });
-  
+
             if (isMounted) {
               setData(response.data);
               setFetchError(null);
@@ -45,7 +45,7 @@ const useLocation = () => {
             }
           }
         }
-        
+
       }
       catch (err) {
         if (isMounted) {
@@ -63,7 +63,7 @@ const useLocation = () => {
       controller.abort();
     }
 
-  }, [position,geoDenied])
+  }, [position, geoDenied])
 
   return { dataLocation, ErrorLocation, ipInfo }
 }
