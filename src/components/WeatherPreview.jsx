@@ -119,8 +119,8 @@ const City = styled.div`
 const WeatherPreview = () => {
 
   const { data, fetchError, isLoading } = useAxiosFetch();
-  const { weatherLoading, weatherData, weatherFetchError,
-    setWeatherFetchError, setWeatherLoading, setWeatherData, isCelsius, convertTemp, setReset,reset
+  const { weatherLoading, weatherData, weatherFetchError, setDrawerState,
+    setWeatherFetchError, setWeatherLoading, setWeatherData, isCelsius, convertTemp, setReset, reset
   } = useContext(ContextApi);
 
   useEffect(() => {
@@ -134,8 +134,8 @@ const WeatherPreview = () => {
       <Drawer />
       <ContainerCustom>
         <Header>
-          <ButtonCustom size='medium' >Search for places</ButtonCustom>
-          <IconButton aria-label="location" onClick={()=>setReset(!reset)} >
+          <ButtonCustom size='medium' onClick={() => setDrawerState(true)} >Search for places</ButtonCustom>
+          <IconButton aria-label="location" onClick={() => setReset(!reset)} >
             <MyLocationIconC />
           </IconButton>
         </Header>
