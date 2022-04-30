@@ -4,11 +4,12 @@ import React, { useContext, useEffect } from 'react'
 import styled from 'styled-components'
 import tw from "twin.macro"
 import cloud from '../assets/images/Cloud-background.png'
-import cloudStateImage from '../assets/images/Clear.png'
 import FmdGoodIcon from '@mui/icons-material/FmdGood'
 import Drawer from './Drawer'
 import { ContextApi } from "../context/ContextApi";
 import useAxiosFetch from "../hooks/useAxiosFetch";
+import moment from 'moment';
+import getImages from '../utils/getImage';
 
 
 const ContainerCustom = styled(Container)`
@@ -114,11 +115,13 @@ const City = styled.div`
   }
 `
 
+
 const WeatherPreview = () => {
-  const { drawerState, setDrawerState } = useContext(ContextApi);
 
   const { data, fetchError, isLoading } = useAxiosFetch();
-  const { weatherLoading, weatherData, weatherFetchError, setWeatherFetchError, setWeatherLoading, setWeatherData } = useContext(ContextApi);
+  const { drawerState, setDrawerState, weatherLoading, weatherData, weatherFetchError,
+    setWeatherFetchError, setWeatherLoading, setWeatherData, isCelsius, convertTemp
+  } = useContext(ContextApi);
 
   useEffect(() => {
     setWeatherData(data)
@@ -126,7 +129,6 @@ const WeatherPreview = () => {
     setWeatherLoading(isLoading)
   }, [data, setWeatherData, setWeatherFetchError, setWeatherLoading, fetchError, isLoading])
 
-  
   return (
     <ContainerCustom id="drawer-container" style={{ padding: 0, height: '100%', position: 'relative' }}>
       <Drawer />
@@ -140,14 +142,14 @@ const WeatherPreview = () => {
       </ContainerCustom>
       <div style={{ display: 'flex', justifyContent: 'center', position: 'relative', marginBottom: 5 }}>
         <img src={cloud} alt="cloud" style={cloudImgStyle} className='opacity-25' />
-        <img src={cloudStateImage} alt="cloud" style={cloudStateStyle} className='w-6/12' />
+        {!weatherFetchError && !weatherLoading && (<img src={getImages(weatherData.consolidated_weather[0].weather_state_abbr)} alt="cloud" style={cloudStateStyle} className='w-6/12' />)}
       </div>
-      <TemperatureDegree>{ !weatherFetchError && !weatherLoading && parseInt(weatherData.consolidated_weather[0].the_temp)}<span>°C</span></TemperatureDegree>
-      <TemperatureState>Shower</TemperatureState>
-      <Date><span>Today</span><span>•</span><span>Fri-5-Jun</span></Date>
+      <TemperatureDegree>{!weatherFetchError && !weatherLoading && parseInt(convertTemp(weatherData.consolidated_weather[0].the_temp))}<span>{isCelsius ? '°C' : '°F'}</span></TemperatureDegree>
+      <TemperatureState>{!weatherFetchError && !weatherLoading && weatherData.consolidated_weather[0].weather_state_name}</TemperatureState>
+      <Date><span>Today</span><span>•</span><span>{!weatherFetchError && !weatherLoading && moment(weatherData.consolidated_weather[0].applicable_date).format('ddd,d MMMM')}</span></Date>
       <City style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', marginBottom: 20 }}>
         <FmdGoodIcon />
-        <span>City</span>
+        <span>{!weatherFetchError && !weatherLoading && weatherData.title}</span>
       </City>
     </ContainerCustom>
   )

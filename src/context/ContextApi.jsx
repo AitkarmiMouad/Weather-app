@@ -10,7 +10,17 @@ const ContextApiProvider = (props) => {
   const [weatherData, setWeatherData] = useState([]);
   const [weatherFetchError, setWeatherFetchError] = useState(null);
   const [weatherLoading, setWeatherLoading] = useState(true);
+  const [isCelsius, setIsCelcius] = useState(true)
 
+
+  function convertTemp(temp) {
+    if (isCelsius) {
+      return temp
+    }
+    else {
+      return (+temp * 9 / 5 + 32).toFixed(2)
+    }
+  }
 
   useEffect(() => {
     setLocationList(locations)
@@ -20,7 +30,8 @@ const ContextApiProvider = (props) => {
     <ContextApi.Provider
       value={{
         weatherFetchError, setWeatherFetchError, weatherLoading, setWeatherLoading,
-        drawerState, setDrawerState, locationList, setLocationList, weatherData, setWeatherData
+        drawerState, setDrawerState, locationList, setLocationList, weatherData, setWeatherData,
+        isCelsius, setIsCelcius, convertTemp
       }} >
       {props.children}
     </ContextApi.Provider>

@@ -1,9 +1,10 @@
 import { Container, IconButton, Typography } from '@mui/material'
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import tw from 'twin.macro'
 import TodaysHightlights from './TodaysHightlights'
 import WeatherForcast from './WeatherForcast'
+import { ContextApi } from '../context/ContextApi'
 
 const ContainerCustom = styled(Container)`
   &&{
@@ -45,11 +46,14 @@ const secondaryCircleButton = {
 }
 
 const WeatherDashboard = () => {
+
+  const { isCelsius, setIsCelcius } = useContext(ContextApi)
+
   return (
     <ContainerCustom className="h-full">
       <Header>
-        <CircleButton>°C</CircleButton>
-        <CircleButton style={secondaryCircleButton}>°F</CircleButton>
+        <CircleButton style={!isCelsius ? secondaryCircleButton : null} onClick={() => setIsCelcius(true)}>°C</CircleButton>
+        <CircleButton style={isCelsius ? secondaryCircleButton : null} onClick={() => setIsCelcius(false)}>°F</CircleButton>
       </Header>
 
       <WeatherForcast />
@@ -58,7 +62,7 @@ const WeatherDashboard = () => {
 
       <TodaysHightlights />
 
-      <Footer>created by <span className='font-bold underline'>AitkarmiMouad</span> - devChallenges.io</Footer>
+      <Footer>created by <a href='https://github.com/AitkarmiMouad' target='_blank' rel="noreferrer" className='font-bold underline'>AitkarmiMouad</a> - devChallenges.io</Footer>
 
     </ContainerCustom>
   )
