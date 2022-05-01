@@ -164,7 +164,7 @@ const Drawer = () => {
             width={300}
             itemSize={50}
             itemCount={listSize}
-            overscanCount={50}
+            //overscanCount={50}
             className='ListBox'
           >
             {renderRow}
