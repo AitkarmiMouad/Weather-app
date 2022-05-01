@@ -6,7 +6,7 @@
 
 <div align="center">
   <h3>
-    <a href="https://{your-demo-link.your-domain}">
+    <a href="https://weather-app-sigma-nine.vercel.app">
       Demo
     </a>
     <span> | </span>
@@ -16,47 +16,75 @@
   </h3>
 </div>
 
-<!-- TABLE OF CONTENTS -->
+---
 
-## Table of Contents
+<div align="center">
+  <a href="#links">Links</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#how-to-use">How To Use</a>
+</div>
+<br />
 
-- [Table of Contents](#table-of-contents)
-- [Overview](#overview)
-  - [Built With](#built-with)
-- [Features](#features)
-- [How To Use](#how-to-use)
-- [Acknowledgements](#acknowledgements)
-- [Contact](#contact)
-- [Available Scripts](#available-scripts)
-  - [`npm start`](#npm-start)
-  - [`npm test`](#npm-test)
-  - [`npm run build`](#npm-run-build)
-  - [`npm run eject`](#npm-run-eject)
+<div>
+  <p>🔎 <strong>About: </strong>See the weather in your city/state or anywhere in the world.</p>
+</div>
 
-<!-- OVERVIEW -->
+<div>
+  <h2>⚔️ 𝗧𝗵𝗲 𝗰𝗵𝗮𝗹𝗹𝗲𝗻𝗴𝗲</h2>
+  <p>Users should be able to see or perform:</p>
 
-## Overview
+  - [x] City weather by default, preferably current location
+  - [x] Search by any city
+  - [x] Weather of today and the next 5 days
+  - [x] The date and location of the weather
+  - [x] According to image for each type of weather
+  - [x] The min and max degree each day
+  - [x] Wind status and wind direction
+  - [x] Humidity percentage
+  - [x] Visibility indicator
+  - [x] Request current location weather
+  - [x] Convert temperature in Celsius to Fahrenheit
+</div>
 
-![screenshot](https://user-images.githubusercontent.com/16707738/92399059-5716eb00-f132-11ea-8b14-bcacdc8ec97b.png)
+<div>
+  <h2>⚙️ 𝗣𝗹𝘂𝘀</h2>
+  <p>✔️ If the user rejects the current location request permission, the location will be fetched through the ip address.</p>
+  <p>✔️ Search autocomplete.</p>
+</div>
 
+<h2 id="technologies">⚡️ 𝗧𝗲𝗰𝗵𝗻𝗼𝗹𝗼𝗴𝗶𝗲𝘀</h2>
 
-- Where can I see your demo?
+<ul>
+  <li>ReactJS</li>
+  <li>Material-UI</li>
+  <li>Styled components</li>
+  <li>tailwindcss - twin.macro</li>
+  <li>axios</li>
+  <li>framer-motion</li>
+</ul>
 
-### Built With
+<h2>📡 𝗔𝗣𝗜𝘀 𝘂𝘀𝗲𝗱 𝗶𝗻 𝘁𝗵𝗲 𝗮𝗽𝗽𝗹𝗶𝗰𝗮𝘁𝗶𝗼𝗻</h2>
 
-<!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
+<ul>
+  <li>
+    <a 
+      href="https://www.metaweather.com/api/" 
+      target="_blank"
+    >
+      ☀️ MetaWeather 
+    </a>
+  </li>
+  <li>
+    <a 
+      href="https://ipinfo.io/" 
+      target="_blank"
+    >
+      🗄️ IpInfo
+    </a>
+  </li>
+</ul>
 
-- [React](https://reactjs.org/)
-
-## Features
-
-<!-- List the features of your application or follow the template. Don't share the figma file here :) -->
-
-This application/site was created as a submission to a [DevChallenges](https://devchallenges.io/challenges) challenge. The [challenge](https://devchallenges.io/challenges/mM1UIenRhK808W8qmLWv) was to build an application to complete the given user stories.
-
-## How To Use
-
-<!-- Example: -->
+<h2 id="how-to-use">📌 𝗛𝗼𝘄 𝗧𝗼 𝗨𝘀𝗲</h2>
 
 To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
 
@@ -71,55 +99,10 @@ $ npm install
 $ npm start
 ```
 
-## Acknowledgements
-
-<!-- This section should list any articles or add-ons/plugins that helps you to complete the project. This is optional but it will help you in the future. For example: -->
-
-  -
-
-## Contact
-
-- GitHub [AitkarmiMouad](https://github.com/AitkarmiMouad)
-
 ---
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
 
