@@ -10,8 +10,6 @@ function App() {
 
   const { weatherLoading } = useContext(ContextApi);
 
-  console.log(weatherLoading)
-
   return (
     <div>
       <GlobalStyle />
