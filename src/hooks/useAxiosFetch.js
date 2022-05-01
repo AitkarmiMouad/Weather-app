@@ -30,8 +30,6 @@ const useAxiosFetch = (dataUrl = null) => {
     let isMounted = true;
     const controller = new AbortController();
 
-    console.log('useEffect :' + reset + dataUrl + ipInfo)
-
     const fetchLocation = async () => {
       setIsLoading(true);
       setIpInfo()

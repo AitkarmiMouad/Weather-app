@@ -1,25 +1,30 @@
 import { Grid } from "@mui/material";
 import WeatherDashboard from "./components/WeatherDashboard";
 import WeatherPreview from "./components/WeatherPreview";
-import ContextApiProvider from "./context/ContextApi";
+import { ContextApi } from "./context/ContextApi";
 import GlobalStyle from "./style/GlobalStyle";
+import Loading from './components/Loading'
+import { useContext } from 'react'
 
 function App() {
 
+  const { weatherLoading } = useContext(ContextApi);
+
+  console.log(weatherLoading)
+
   return (
-    <ContextApiProvider>
-      <div>
-        <GlobalStyle />
-        <Grid container >
-          <Grid item xs={12} sm={4} >
-            <WeatherPreview />
-          </Grid>
-          <Grid item xs={12} sm={8}>
-            <WeatherDashboard />
-          </Grid>
+    <div>
+      <GlobalStyle />
+      {weatherLoading && <Loading />}
+      <Grid container style={weatherLoading ? { display: 'none' } : null} >
+        <Grid item xs={12} sm={4} >
+          <WeatherPreview />
         </Grid>
-      </div>
-    </ContextApiProvider>
+        <Grid item xs={12} sm={8}>
+          <WeatherDashboard />
+        </Grid>
+      </Grid>
+    </div>
   );
 }
 
