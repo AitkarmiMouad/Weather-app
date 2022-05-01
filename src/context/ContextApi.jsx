@@ -11,6 +11,7 @@ const ContextApiProvider = (props) => {
   const [weatherFetchError, setWeatherFetchError] = useState(null);
   const [weatherLoading, setWeatherLoading] = useState(true);
   const [isCelsius, setIsCelcius] = useState(true)
+  const [inputSearch, setInputSearch] = useState();
   const [reset, setReset] = useState(false);
 
 
@@ -32,7 +33,7 @@ const ContextApiProvider = (props) => {
       value={{
         weatherFetchError, setWeatherFetchError, weatherLoading, setWeatherLoading,
         drawerState, setDrawerState, locationList, setLocationList, weatherData, setWeatherData,
-        isCelsius, setIsCelcius, convertTemp, reset, setReset
+        isCelsius, setIsCelcius, convertTemp, reset, setReset,inputSearch, setInputSearch
       }} >
       {props.children}
     </ContextApi.Provider>

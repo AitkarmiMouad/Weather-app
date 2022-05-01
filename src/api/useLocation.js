@@ -10,17 +10,17 @@ const useLocation = () => {
   const [position, setPosition] = useState('');
   const [geoDenied, setGeoDenied] = useState(false);
 
-
+  
   function getPosition(position) {
     setPosition(`${position.coords.latitude},${position.coords.longitude}`)
   }
-
+  
   function geoError(error) {
     if (error.code === error.PERMISSION_DENIED) {
       setGeoDenied(true)
     }
   }
-
+  
   useEffect(() => {
     let isMounted = true;
     const controller = new AbortController();
@@ -65,7 +65,7 @@ const useLocation = () => {
 
   }, [position, geoDenied])
 
-  return { dataLocation, ErrorLocation, ipInfo }
+  return { dataLocation, ErrorLocation, ipInfo ,setIpInfo }
 }
 
 export default useLocation

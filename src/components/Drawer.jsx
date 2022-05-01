@@ -1,5 +1,5 @@
 import { ContextApi } from '../context/ContextApi'
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import tw from 'twin.macro'
 import { lighten } from "polished";
@@ -95,10 +95,10 @@ const SearchForm = styled.form`
 
 const Drawer = () => {
 
-  const { drawerState, setDrawerState, locationList } = useContext(ContextApi);
+  const { drawerState, setDrawerState, locationList, inputSearch, setInputSearch, setReset } = useContext(ContextApi);
   const [location, setLocation] = useState();
   const [listSize, setListSize] = useState(1);
-  const [inputSearch, setInputSearch] = useState();
+  const inputRef = useRef('');
 
   useEffect(() => {
     setLocation(locationList)
@@ -139,6 +139,7 @@ const Drawer = () => {
         <SearchForm closeIcon={closeIcon}>
           <div className="form__input-group">
             <input
+              ref={inputRef}
               type="search"
               placeholder="search location"
               className="form__input"
@@ -151,7 +152,7 @@ const Drawer = () => {
             </IconContext.Provider>
           </div>
 
-          <button type="submit" className="form__search">
+          <button type="button" className="form__search" onClick={() => { setReset(inputRef.current.value ? inputRef.current.value : 'casablanca'); setDrawerState(false) }}>
             Search
           </button>
         </SearchForm>
@@ -173,24 +174,29 @@ const Drawer = () => {
       </CustomContainer>
     </SwipeableDrawer>
   )
+
+
+  function renderRow(props) {
+    const { data, index, style } = props;
+
+    const item = data[index];
+
+    return (
+      <ListItem style={style} className='listItem' key={index} component="div" disablePadding
+        onClick={() => { setReset(item); setDrawerState(false) }}
+        secondaryAction={
+          <IconButton edge="end" aria-label="arrow" >
+            <ArrowForwardIosIcon style={{ fontSize: '1rem' }} className='opacity-0 arrowIcon' />
+          </IconButton>
+        }>
+        <ListItemButton>
+          <ListItemText style={{ color: 'var(--custom-white)' }} primary={`${item}`} />
+        </ListItemButton>
+      </ListItem>
+    )
+  }
+
 }
 
-function renderRow(props) {
-  const { data, index, style } = props;
-
-  const item = data[index];
-
-  return (
-    <ListItem style={style} className='listItem' key={index} component="div" disablePadding secondaryAction={
-      <IconButton edge="end" aria-label="arrow" >
-        <ArrowForwardIosIcon style={{ fontSize: '1rem' }} className='opacity-0 arrowIcon' />
-      </IconButton>
-    }>
-      <ListItemButton>
-        <ListItemText style={{ color: 'var(--custom-white)' }} primary={`${item}`} />
-      </ListItemButton>
-    </ListItem>
-  )
-}
 
 export default Drawer

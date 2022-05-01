@@ -135,7 +135,7 @@ const WeatherPreview = () => {
       <ContainerCustom>
         <Header>
           <ButtonCustom size='medium' onClick={() => setDrawerState(true)} >Search for places</ButtonCustom>
-          <IconButton aria-label="location" onClick={() => setReset(!reset)} >
+          <IconButton aria-label="location" onClick={() => setReset()} >
             <MyLocationIconC />
           </IconButton>
         </Header>
