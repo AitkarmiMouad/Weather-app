@@ -1,3 +1,5 @@
+### ❗ The weather api is down so does the application ❗
+
 <h1 align="center">⛅ 𝗪𝗲𝗮𝘁𝗵𝗲𝗿 𝗔𝗽𝗽</h1>
 
 <div align="center">
